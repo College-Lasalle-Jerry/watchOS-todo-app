@@ -11,6 +11,7 @@ struct SettingsView: View {
     
     @AppStorage("lineCount") var lineCount: Int = 1
     @State private var value: Float = 1.0
+    @FocusState private var isFocused: Bool // digital crownfocus
     
     
     func update() {
@@ -31,9 +32,11 @@ struct SettingsView: View {
                 self.update()
             }), in: 1...4, step: 1)
                 .tint(.accent)
+                .focused($isFocused)
                 
         }.onAppear {
             value = Float(lineCount)
+            isFocused = true
         }
     }
 }
