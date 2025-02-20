@@ -15,6 +15,8 @@ struct ContentView: View {
     
     @State private var text: String = ""
     
+    @AppStorage("lineCount") var lineCount: Int = 0
+    
     func save() {
 //        dump(notes)
         do{
@@ -89,7 +91,7 @@ struct ContentView: View {
                                         .frame(width: 4)
                                         .foregroundStyle(.accent)
                                     Text(notes[i].text)
-                                        .lineLimit(1)
+                                        .lineLimit(lineCount)
                                         .padding(.leading, 5)
                                 }
                             }
